@@ -1,0 +1,12 @@
+easydict==1.10
+numpy==1.23.0
+pandas==1.5.3
+pytorch_lightning==2.0.2
+PyYAML==6.0.1
+scipy==1.9.1
+torchmetrics
+waymo-open-dataset-tf-2-12-0==1.6.4
+torch==1.12.1+cu102
+torchvision==0.13.1+cu102
+torchaudio==0.12.1
+shapely

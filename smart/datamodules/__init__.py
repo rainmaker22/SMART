@@ -1,0 +1,1 @@
+from smart.datamodules.scalable_datamodule import MultiDataModule

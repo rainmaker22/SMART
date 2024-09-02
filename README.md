@@ -60,7 +60,7 @@ Follow the instructions [here](https://github.com/waymo-research/waymo-open-data
 
 Preprocess the dataset by running:
 ```
-python data_preprocess.py ./data/waymo/scenario/training  ./data/waymo_processed/training
+python data_preprocess.py --input_dir ./data/waymo/scenario/training  --output_dir ./data/waymo_processed/training
 ```
 The first path is the raw data path, and the second is the output data path.
 

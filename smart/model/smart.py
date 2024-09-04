@@ -96,13 +96,11 @@ class SMART(pl.LightningModule):
         self.minADE = minADE(max_guesses=1)
         self.minFDE = minFDE(max_guesses=1)
         self.TokenCls = TokenCls(max_guesses=1)
-        self.clip_cls = TokenCls(max_guesses=1)
 
         self.test_predictions = dict()
         self.cls_loss = nn.CrossEntropyLoss(label_smoothing=0.1)
         self.map_cls_loss = nn.CrossEntropyLoss(label_smoothing=0.1)
         self.inference_token = False
-        self.write_submission = True
         self.rollout_num = 1
 
     def get_trajectory_token(self):
@@ -170,6 +168,9 @@ class SMART(pl.LightningModule):
         next_token_prob = pred['next_token_prob']
         cls_loss = self.cls_loss(next_token_prob[next_token_eval_mask], next_token_idx_gt[next_token_eval_mask])
         loss = cls_loss
+        self.TokenCls.update(pred=next_token_idx[next_token_eval_mask], target=next_token_idx_gt[next_token_eval_mask],
+                        valid_mask=next_token_eval_mask[next_token_eval_mask])
+        self.log('val_cls_acc', self.TokenCls, prog_bar=True, on_step=False, on_epoch=True, batch_size=1, sync_dist=True)
         self.log('val_loss', loss, prog_bar=True, on_step=False, on_epoch=True, batch_size=1, sync_dist=True)
 
         eval_mask = data['agent']['valid_mask'][:, self.num_historical_steps-1]  # * (data['agent']['category'] == 3)
@@ -179,21 +180,18 @@ class SMART(pl.LightningModule):
             gt = pred['gt']
             valid_mask = data['agent']['valid_mask'][:, self.num_historical_steps:]
             pred_traj = pred['pred_traj']
-            next_token_idx = pred['next_token_idx']
-
-            next_token_idx = pred['next_token_idx'][..., None]
-            next_token_idx_gt = pred['next_token_idx_gt'][:, 2:]
-            next_token_eval_mask = pred['next_token_eval_mask'][:, 2:]
-            next_token_eval_mask[:, 1:] = False
-            self.TokenCls.update(pred=next_token_idx[next_token_eval_mask], target=next_token_idx_gt[next_token_eval_mask],
-                                 valid_mask=next_token_eval_mask[next_token_eval_mask])
-            self.log('val_cls_acc', self.TokenCls, prog_bar=True, on_step=False, on_epoch=True, batch_size=1, sync_dist=True)
+            # next_token_idx = pred['next_token_idx'][..., None]
+            # next_token_idx_gt = pred['next_token_idx_gt'][:, 2:]
+            # next_token_eval_mask = pred['next_token_eval_mask'][:, 2:]
+            # next_token_eval_mask[:, 1:] = False
+            # self.TokenCls.update(pred=next_token_idx[next_token_eval_mask], target=next_token_idx_gt[next_token_eval_mask],
+            #                      valid_mask=next_token_eval_mask[next_token_eval_mask])
+            # self.log('val_inference_cls_acc', self.TokenCls, prog_bar=True, on_step=False, on_epoch=True, batch_size=1, sync_dist=True)
             eval_mask = data['agent']['valid_mask'][:, self.num_historical_steps-1]
-            vis_traj = pred_traj.cpu().numpy()
 
             self.minADE.update(pred=pred_traj[eval_mask], target=gt[eval_mask], valid_mask=valid_mask[eval_mask])
             self.minFDE.update(pred=pred_traj[eval_mask], target=gt[eval_mask], valid_mask=valid_mask[eval_mask])
-            print('ade: ', self.minADE.compute(), 'fde: ', self.minFDE.compute())
+            # print('ade: ', self.minADE.compute(), 'fde: ', self.minFDE.compute())
 
             self.log('val_minADE', self.minADE, prog_bar=True, on_step=False, on_epoch=True, batch_size=1)
             self.log('val_minFDE', self.minFDE, prog_bar=True, on_step=False, on_epoch=True, batch_size=1)

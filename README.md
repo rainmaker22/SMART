@@ -10,7 +10,8 @@
 - **Champion** of the [Waymo Open Sim Agents Challenge 2024](https://waymo.com/open/challenges/2024/sim-agents/) at the [CVPR 2024 Workshop on Autonomous Driving (WAD)](https://cvpr2024.wad.vision/)
 
 ## News
-- **[September 26, 2024]** SMART was accepted at NeurIPS 2024
+- **[December 31, 2024]** SMART-Planner achieved state-of-the-art performance among learning-based algorithms on **nuPlan closed-loop planning**
+- **[September 26, 2024]** SMART was **accepted to** NeurIPS 2024
 - **[August 31, 2024]** Code released
 - **[May 24, 2024]** SMART won the championship of the [Waymo Open Sim Agents Challenge 2024](https://waymo.com/open/challenges/2024/sim-agents/) at the [CVPR 2024 Workshop on Autonomous Driving (WAD)](https://cvpr2024.wad.vision/)
 - **[May 24, 2024]** SMART paper released on [arxiv](https://arxiv.org/abs/2405.15677)
@@ -104,14 +105,21 @@ To comply with the WOMD participation agreement, we will release the model param
 
 ## Results
 
+### Waymo Open Motion Dataset Sim Agents Challenge
+
 Our model achieves the following performance on the [Waymo Open Motion Dataset Sim Agents Challenge](https://waymo.com/open/challenges/2024/sim-agents/):
 
-| Model name    | Metirc Score |
+| Model name    | Metric Score |
 | :-----------: | ------------ |
 | SMART-tiny    | 0.7591       |
 | SMART-large   | 0.7614       |
 | SMART-zeroshot| 0.7210       |
 
+### NuPlan Closed-loop Planning
+
+**SMART-Planner** achieved state-of-the-art performance among learning-based algorithms on **nuPlan closed-loop planning**. The results on val14 are shown below:
+
+![nuPlan Closed-loop Planning](assets/result1.png)
 
 ## Citation 
 

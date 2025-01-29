@@ -4,10 +4,10 @@ __pycache__/
 *$py.class
 .github
 ckpt/
-assets/
+# assets/
 # C extensions
 *.so
-/assets
+# /assets
 /data
 # Distribution / packaging
 .Python

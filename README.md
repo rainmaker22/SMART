@@ -10,7 +10,7 @@
 - **Champion** of the [Waymo Open Sim Agents Challenge 2024](https://waymo.com/open/challenges/2024/sim-agents/) at the [CVPR 2024 Workshop on Autonomous Driving (WAD)](https://cvpr2024.wad.vision/)
 
 ## News
-- **[December 31, 2024]** SMART-Planner achieved state-of-the-art performance among learning-based algorithms on **nuPlan closed-loop planning**
+- **[December 31, 2024]** SMART-Planner achieved state-of-the-art performance on **nuPlan closed-loop planning**
 - **[September 26, 2024]** SMART was **accepted to** NeurIPS 2024
 - **[August 31, 2024]** Code released
 - **[May 24, 2024]** SMART won the championship of the [Waymo Open Sim Agents Challenge 2024](https://waymo.com/open/challenges/2024/sim-agents/) at the [CVPR 2024 Workshop on Autonomous Driving (WAD)](https://cvpr2024.wad.vision/)

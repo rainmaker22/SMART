@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smart"
+version = "0.0.0"
+description = "Scalable Multi-agent Real-time Motion Generation via Next-token Prediction"
+readme = "README.md"
+authors = [
+    {name = "Xiaoxin Feng"},
+    {name = "Ziyan Gao"},
+    {name = "Yuheng Kan"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "easydict",
+    "numpy",
+    "pandas",
+    "pytorch-lightning",
+    "scipy",
+    "torch-cluster",
+    "torch-geometric",
+    "torch-scatter",
+    "torch",
+    "torchmetrics",
+    "tqdm",
+]
+
+[project.urls]
+"Homepage" = "https://smart-motion.github.io/smart/"
+"Repository" = "https://github.com/rainmaker22/SMART"
+"Paper" = "https://arxiv.org/abs/2405.15677"
+
+[tool.setuptools]
+packages = ["smart"]

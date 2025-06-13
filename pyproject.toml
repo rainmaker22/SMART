@@ -8,7 +8,6 @@ version = "0.0.0"
 description = "Scalable Multi-agent Real-time Motion Generation via Next-token Prediction"
 readme = "README.md"
 authors = [
-    {name = "Wei Wu"},
     {name = "Xiaoxin Feng"},
     {name = "Ziyan Gao"},
     {name = "Yuheng Kan"}

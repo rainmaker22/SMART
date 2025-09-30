@@ -20,6 +20,8 @@
 ## Introduction
 This repository contains the official implementation of SMART: Scalable Multi-agent Real-time Motion Generation via Next-token Prediction. SMART is a novel autonomous driving motion generation paradigm that models vectorized map and agent trajectory data into discrete sequence tokens.
 
+https://github.com/user-attachments/assets/74a61627-8444-4e54-bb10-d317dd2aacd9
+
 ## Requirements
 
 To set up the environment, you can use conda to create and activate a new environment with the necessary dependencies:
